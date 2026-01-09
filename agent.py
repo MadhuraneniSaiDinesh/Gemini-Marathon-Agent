@@ -6,7 +6,7 @@ import sys
 
 
 # PASTE YOUR FULL KEY HERE
-api_key = "AIzaSyD6aNTK9o2RAMctqNaofcGqLPewThBau4w"
+api_key = "AIzaSyDpBVsZdenyRWknc5FNGEfiLJw6xkH3wFQ"
 client = genai.Client(api_key=api_key)
 
 # We will try these models in order. If one fails, we switch to the next.

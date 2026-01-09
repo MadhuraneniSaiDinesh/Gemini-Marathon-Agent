@@ -1,12 +1,12 @@
-def make_me_happy():
-    """A function designed to bring a little bit of happiness."""
-    print("✨ Making you happy! ✨")
-    print("-------------------------")
-    print("☀️ The sun is shining, even if only in our code.")
-    print("😊 Here is a smile for you!")
-    print("-------------------------")
-    print("Remember to take a break and enjoy the small things.")
-    print(">>> SUCCESS: Happiness achieved! <<<")
+# app.py
+
+def get_telugu_meaning_of_fun():
+    """Prints the Telugu meanings of the word 'Fun'."""
+    print("--- Meaning of 'Fun' in Telugu ---")
+    print("1. వినోదం (Vinodam) - Entertainment, Amusement")
+    print("2. సరదా (Sarada) - Joking, lightheartedness, simple fun")
+    print("3. ఆనందం (Anandam) - Joy, Happiness (Context dependent)")
+    print("\nNote: 'సరదా' (Sarada) is the most common and direct translation used in everyday conversation.")
 
 if __name__ == "__main__":
-    make_me_happy()
+    get_telugu_meaning_of_fun()

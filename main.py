@@ -15,7 +15,7 @@ prompt = "Write a Python script named 'count_to_ten.py' that prints numbers 1 to
 # We are using the alias that worked for you before
 model_name = "gemini-flash-latest" 
 
-for attempt in range(3): 
+for attempt in range(1): 
     try:
         response = client.models.generate_content(
             model=model_name, 
