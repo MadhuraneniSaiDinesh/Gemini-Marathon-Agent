@@ -19,7 +19,7 @@ MODEL_ROSTER = [
 
 def run_script(filename):
     """Runs the generated script."""
-    print(f"⚙️ Running {filename}...")
+    print(f" Running {filename}...")
     try:
         result = subprocess.run(["python", filename], capture_output=True, text=True, timeout=30)
         if result.returncode == 0:
@@ -47,7 +47,7 @@ def ask_gemini(prompt, history=[]):
             if response.function_calls:
                 for call in response.function_calls:
                     if call.name == "create_file":
-                        print(f"✍️ Writing code to {call.args['filename']}...")
+                        print(f" Writing code to {call.args['filename']}...")
                         create_file(**call.args)
                         return f"CODE_WRITTEN: {call.args['filename']}"
             return response.text
@@ -64,18 +64,18 @@ def ask_gemini(prompt, history=[]):
 
 # --- THE INTERACTIVE LOOP ---
 
-print("\n🤖 GEMINI MARATHON AGENT READY (Multi-Model Mode)")
-user_task = input("👉 What should I build? (Keep it simple!): ")
+print("\n GEMINI MARATHON AGENT READY (Multi-Model Mode)")
+user_task = input("What should I build? (Keep it simple!): ")
 
 print(f"\n--- STARTING TASK: {user_task} ---")
 history_log = [] 
 initial_prompt = f"Write a complete Python script named 'app.py' that does the following: {user_task}. Use the create_file tool."
 
-print("🧠 Thinking...")
+print(" Thinking...")
 result = ask_gemini(initial_prompt, history_log)
 
 if "Error" in result and "CODE_WRITTEN" not in result:
-    print("\n❌ IDLE: All quotas are full right now. Please wait 1 hour.")
+    print("\n IDLE: All quotas are full right now. Please wait 1 hour.")
     sys.exit()
 
 # The Healing Loop
@@ -85,17 +85,17 @@ for attempt in range(5):
     success, output = run_script("app.py")
     
     if success:
-        print("\n✅ SUCCESS! The app works.")
+        print("\n SUCCESS! The app works.")
         print("Output:", output)
         break
     else:
-        print("\n❌ CRASHED! Fixing it...")
+        print("\n CRASHED! Fixing it...")
         # Trim error to save tokens
         short_error = output.strip()[:300] 
         print(f"Error: {short_error}...") 
         
         fix_prompt = f"The file 'app.py' crashed with this error:\n{short_error}\nPlease rewrite 'app.py' to fix this. Use the create_file tool."
         
-        print("🧠 Thinking (Fixing)...")
+        print(" Thinking (Fixing)...")
         ask_gemini(fix_prompt, history_log)
         time.sleep(5)

@@ -44,8 +44,8 @@ for attempt in range(1):
 
     except Exception as e:
         if "429" in str(e):
-            print("⏳ specific model busy. Waiting 10 seconds...")
+            print(" specific model busy. Waiting 10 seconds...")
             time.sleep(10)
         else:
-            print(f"❌ Error: {e}")
+            print(f" Error: {e}")
             break
